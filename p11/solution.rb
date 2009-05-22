@@ -101,7 +101,5 @@ end
 
 products.sort!
 
-puts products.count
-
 puts "Solution: #{products.last}"
 
