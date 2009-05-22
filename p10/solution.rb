@@ -1,12 +1,12 @@
-primes = [2]
+primes = [2,3]
 
-current = 3
+current = 5
+increment = 2
 
 start = Time.now
-while primes.last < 2000000
+while current < 2000000
   divisible = false
   limit = Math.sqrt(current)
-  limit = limit/(Math.log(limit)-1)
   primes.each do |n|
     if current % n == 0
       divisible = true
@@ -17,13 +17,19 @@ while primes.last < 2000000
     end
   end
   primes << current unless divisible
-  current += 2
+  current += increment
+  increment = (increment == 2 ? 4 : 2)
 end
 
-puts primes.pop
 puts primes.last
+puts primes.length
 
-sum = primes.inject {|a,b| a+b}
+sum = 0
+primes.each do |n|
+  sum += n
+end
+
+puts sum.class
 
 puts "Time elapsed: #{Time.now-start}s"
 
